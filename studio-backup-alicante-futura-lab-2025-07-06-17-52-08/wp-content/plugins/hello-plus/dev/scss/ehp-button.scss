@@ -1,0 +1,133 @@
+@use "./variables";
+
+a.ehp-button,
+a.ehp-button:not([href]):not([tabindex]) {
+	--ehp-button-primary-icon-spacing: 10px;
+	--ehp-button-primary-text-color: #FFFFFF;
+	--ehp-button-primary-text-color-hover: #555963;
+	--ehp-button-primary-border-width: 0;
+	--ehp-button-primary-border-color: transparent;
+	--ehp-button-primary-padding-block-end: 8px;
+	--ehp-button-primary-padding-block-start: 8px;
+	--ehp-button-primary-padding-inline-end: 16px;
+	--ehp-button-primary-padding-inline-start: 16px;
+	--ehp-button-primary-border-radius-block-end: #{variables.$corners-shape-default};
+	--ehp-button-primary-border-radius-block-start: #{variables.$corners-shape-default};
+	--ehp-button-primary-border-radius-inline-end: #{variables.$corners-shape-default};
+	--ehp-button-primary-border-radius-inline-start: #{variables.$corners-shape-default};
+
+	--ehp-button-secondary-icon-spacing: 10px;
+	--ehp-button-secondary-text-color: #555963;
+	--ehp-button-secondary-text-color-hover: #555963;
+	--ehp-button-secondary-border-width: 2px;
+	--ehp-button-secondary-border-color: #555963;
+	--ehp-button-secondary-padding-block-end: 8px;
+	--ehp-button-secondary-padding-block-start: 8px;
+	--ehp-button-secondary-padding-inline-end: 16px;
+	--ehp-button-secondary-padding-inline-start: 16px;
+
+	--ehp-button-text-color: var(--ehp-button-primary-text-color);
+	--ehp-button-text-color-hover: var(--ehp-button-primary-text-color-hover);
+	--ehp-button-border-color: var(--ehp-button-primary-border-color);
+	--ehp-button-padding-block-end: var(--ehp-button-primary-padding-block-end);
+	--ehp-button-padding-block-start: var(--ehp-button-primary-padding-block-start);
+	--ehp-button-padding-inline-end: var(--ehp-button-primary-padding-inline-end);
+	--ehp-button-padding-inline-start: var(--ehp-button-primary-padding-inline-start);
+	--ehp-button-border-width: var(--ehp-button-primary-border-width);
+	--ehp-button-icon-spacing: var(--ehp-button-primary-icon-spacing);
+	--ehp-button-border-radius-block-end: var(--ehp-button-primary-border-radius-block-end);
+	--ehp-button-border-radius-block-start: var(--ehp-button-primary-border-radius-block-start);
+	--ehp-button-border-radius-inline-end: var(--ehp-button-primary-border-radius-inline-end);
+	--ehp-button-border-radius-inline-start: var(--ehp-button-primary-border-radius-inline-start);
+
+	align-items: center;
+	display: flex;
+	gap: var(--ehp-button-icon-spacing);
+	justify-content: center;
+	text-decoration: none;
+	transition: variables.$transition;
+
+	&:hover,
+	&:focus {
+		transition: variables.$transition;
+	}
+
+	&.has-border {
+		border-color: var(--ehp-button-border-color);
+		border-style: solid;
+		border-width: var(--ehp-button-border-width);
+	}
+
+	&.is-type-button {
+		padding-block-end: var(--ehp-button-padding-block-end);
+		padding-block-start: var(--ehp-button-padding-block-start);
+		padding-inline-end: var(--ehp-button-padding-inline-end);
+		padding-inline-start: var(--ehp-button-padding-inline-start);
+		text-decoration: none;
+	}
+
+	&.is-type-link,
+	&.is-type-link:not([href]):not([tabindex]) {
+		background: none;
+		align-self: center;
+		text-decoration: underline;
+
+		&:hover,
+		&:focus {
+			background: none;
+		}
+	}
+
+	&.is-type-button,
+	&.is-type-link,
+	&.is-type-button:not([href]):not([tabindex]),
+	&.is-type-link:not([href]):not([tabindex]) {
+		color: var(--ehp-button-text-color);
+
+		&:hover,
+		&:focus {
+			color: var(--ehp-button-text-color-hover);
+		}
+	}
+
+	&.has-shape-custom {
+		--ehp-shapes-border-radius-block-end: var(--ehp-button-primary-border-radius-block-end);
+		--ehp-shapes-border-radius-block-start: var(--ehp-button-primary-border-radius-block-start);
+		--ehp-shapes-border-radius-inline-end: var(--ehp-button-primary-border-radius-inline-end);
+		--ehp-shapes-border-radius-inline-start: var(--ehp-button-primary-border-radius-inline-start);
+	}
+
+	& i {
+		color: currentColor;
+	}
+
+	& svg {
+		fill: currentColor;
+		height: 1em;
+		width: 1em;
+	}
+}
+
+a.ehp-button--secondary,
+a.ehp-button--secondary:not([href]):not([tabindex]) {
+    --ehp-button-text-color: var(--ehp-button-secondary-text-color);
+    --ehp-button-text-color-hover: var(--ehp-button-secondary-text-color-hover);
+    --ehp-button-border-color: var(--ehp-button-secondary-border-color);
+    --ehp-button-padding-block-end: var(--ehp-button-secondary-padding-block-end);
+    --ehp-button-padding-block-start: var(--ehp-button-secondary-padding-block-start);
+    --ehp-button-padding-inline-end: var(--ehp-button-secondary-padding-inline-end);
+    --ehp-button-padding-inline-start: var(--ehp-button-secondary-padding-inline-start);
+    --ehp-button-border-width: var(--ehp-button-secondary-border-width);
+    --ehp-button-icon-spacing: var(--ehp-button-secondary-icon-spacing);
+	--ehp-button-border-radius-block-end: var(--ehp-button-secondary-border-radius-block-end);
+	--ehp-button-border-radius-block-start: var(--ehp-button-secondary-border-radius-block-start);
+	--ehp-button-border-radius-inline-end: var(--ehp-button-secondary-border-radius-inline-end);
+	--ehp-button-border-radius-inline-start: var(--ehp-button-secondary-border-radius-inline-start);
+
+	&.has-shape-custom {
+		--ehp-shapes-border-radius-block-end: var(--ehp-button-secondary-border-radius-block-end);
+		--ehp-shapes-border-radius-block-start: var(--ehp-button-secondary-border-radius-block-start);
+		--ehp-shapes-border-radius-inline-end: var(--ehp-button-secondary-border-radius-inline-end);
+		--ehp-shapes-border-radius-inline-start: var(--ehp-button-secondary-border-radius-inline-start);
+	}
+}
