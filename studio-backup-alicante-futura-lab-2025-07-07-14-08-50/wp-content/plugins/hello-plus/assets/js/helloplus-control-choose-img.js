@@ -1,0 +1,1 @@
+!function(){"use strict";var e=elementor.modules.controls.Choose.extend({});class o extends elementorModules.editor.utils.Module{onElementorInit(){elementor.addControlView("choose-img",e)}}const n=new o;window.helloPlusContent=n}();
