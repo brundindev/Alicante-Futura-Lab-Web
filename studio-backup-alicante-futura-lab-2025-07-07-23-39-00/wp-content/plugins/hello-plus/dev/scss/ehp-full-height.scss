@@ -1,0 +1,68 @@
+@use "./variables";
+
+@mixin full-height($min: null, $max: null) {
+	--ehp-box-height: auto;
+	--ehp-box-full-height: 100vh;
+
+	$query: null;
+
+	@supports (height: 100dvh) {
+		--ehp-box-full-height: 100dvh;
+	}
+
+	@if $min != null and $max != null {
+		$query: "(min-width: " + $min + ") and (max-width: " + $max + ")";
+	} @else if $max != null {
+		$query: "(max-width: " + $max + ")";
+	} @else if $min != null {
+		$query: "(min-width: " + $min + ")";
+	}
+
+	@if $query != null {
+		@media #{$query} {
+			--ehp-box-height: var(--ehp-box-full-height, 100vh);
+
+			align-items: center;
+			justify-content: center;
+		};
+	}
+}
+
+@mixin full-height-viewports() {
+	height: 100%;
+	min-height: var(--ehp-box-height);
+
+	&.is-full-height {
+		&-mobile {
+			@include full-height(null, variables.$screen-mobile-max);
+		}
+
+		&-mobile_extra {
+			@include full-height(variables.$screen-mobile-extra-min, variables.$screen-mobile-extra-max);
+		}
+
+		&-tablet {
+			@include full-height(variables.$screen-tablet-min, variables.$screen-tablet-max);
+		}
+
+		&-tablet_extra {
+			@include full-height(variables.$screen-tablet-extra-min, variables.$screen-tablet-extra-max);
+		}
+
+		&-laptop {
+			@include full-height(variables.$screen-laptop-min, variables.$screen-laptop-max);
+		}
+
+		&-desktop {
+			@include full-height(variables.$screen-desktop-min, null);
+
+			&.is-full-height-widescreen {
+				@include full-height(variables.$screen-desktop-min, variables.$screen-desktop-max);
+			}
+		}
+
+		&-widescreen {
+			@include full-height(variables.$screen-widescreen-min, null);
+		}
+	}
+}

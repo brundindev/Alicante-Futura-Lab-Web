@@ -1,0 +1,46 @@
+{
+	"name": "hello-plus",
+	"slug": "hello-plus",
+	"homepage": "https://elementor.com/",
+	"description": "A quick-start theme for Elementor.",
+	"version": "1.6.2",
+	"scripts": {
+		"start": "wp-scripts start",
+		"build:dev": "composer update && composer install && wp-scripts build",
+		"build": "composer install --no-dev && wp-scripts build --env=production",
+		"lint:js": "wp-scripts lint-js",
+		"clean": "rimraf build && rimraf $npm_package_name",
+		"build:dir": "npm run clean && npm run build:dev && rsync -av --exclude-from=.buildignore . hello-plus",
+		"package": "npm run clean && npm run build && rsync -av --exclude-from=.buildignore . $npm_package_name",
+		"package:zip": "npm run package && zip -r $npm_package_name.$npm_package_version.zip ./$npm_package_name/*",
+		"test:php": "docker-compose -f bin/docker-compose.yml run --rm wordpress_phpunit phpunit",
+		"test:playwright": "playwright test -c tests/playwright/playwright.config.ts",
+		"test:playwright:debug": "npm run test:playwright -- --debug",
+		"test:setup:playwright": "wp-env run cli bash hello-plus-config/setup.sh && wp-env run tests-cli bash hello-plus-config/setup.sh",
+		"test:setup:chromium": "npx playwright install chromium"
+	},
+	"devDependencies": {
+		"@elementor/wp-lite-env": "^0.0.20",
+		"@playwright/test": "1.52.0",
+		"@typescript-eslint/parser": "^6.21.0",
+		"@wordpress/eslint-plugin": "^21.6.0",
+		"@wordpress/scripts": "^30.18.0",
+		"copy-webpack-plugin": "^12.0.2",
+		"dotenv": "^16.5.0",
+		"eslint-import-resolver-typescript": "^4.3.2",
+		"eslint-plugin-babel": "^5.3.1",
+		"eslint-plugin-no-jquery": "^3.0.2",
+		"eslint-plugin-react": "^7.35.2",
+		"path": "^0.12.7",
+		"typescript": "^5.8.3",
+		"webpack-cli": "^5.1.4",
+		"webpack-remove-empty-scripts": "^1.0.4"
+	},
+	"dependencies": {
+		"@elementor/icons": "1.12.0",
+		"@elementor/ui": "1.20.3",
+		"composer": "^4.1.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	}
+}
